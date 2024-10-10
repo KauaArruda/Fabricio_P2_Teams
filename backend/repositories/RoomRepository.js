@@ -29,7 +29,7 @@ class RoomRepository {
 
     async findRoomById(roomId) {
         try {
-            return await Room.findById(roomId);
+            return await Room.findOne(roomId);
         } catch (error) {
             throw new Error('Error finding room by id');
         }

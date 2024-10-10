@@ -12,6 +12,15 @@ class AuthController {
         AuthController.instance = this;
     }
 
+    async getAllUsers(req, res) {
+        try {
+            const users = await UserRepository.getAllUsers();
+            res.status(200).json(users);
+        } catch (error) {
+            res.status(500).send('Error list users');
+        }
+    }
+
     async register(req, res) {
         const { name, email, password } = req.body;
         try {
@@ -20,7 +29,7 @@ class AuthController {
             await UserRepository.createUser(userData);
             res.status(201).send('User registered');
         } catch (error) {
-            console.error('Error during registration:', error); // Adicione esta linha
+            console.error('Error during registration:', error);
             res.status(400).send('Error registering user');
         }
     }

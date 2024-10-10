@@ -15,7 +15,7 @@ class UserRepository {
             const user = new User(userData);
             return await user.save();
         } catch (error) {
-            console.error('Error in createUser:', error.message); // Adicionando log do erro
+            console.error('Error in createUser:', error.message);
             throw new Error('Error creating user');
         }
     }    
